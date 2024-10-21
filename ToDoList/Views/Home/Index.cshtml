@@ -1,0 +1,30 @@
+﻿
+@model IEnumerable<ToDoList.Models.ToDoItem>
+@{
+    ViewBag.Title = "Create ToDoItems";
+}
+<h2>ToDo List</h2>
+
+<a asp-action="Create">Add New Item</a>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.IsCompleted</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
